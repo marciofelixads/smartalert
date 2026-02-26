@@ -1,0 +1,33 @@
+services:
+  # The Backend Service
+  - type: web
+    name: smartalert-api
+    env: node
+    rootDir: backend
+    buildCommand: npm install && npx prisma generate
+    startCommand: npm start
+    envVars:
+      - key: APP_ENV
+        value: production
+      - key: PORT
+        value: 5000
+      - key: DATABASE_URL
+        sync: false
+      - key: JWT_SECRET
+        sync: false
+      - key: ENCRYPTION_KEY
+        sync: false
+
+  # The Frontend Static Site
+  - type: web
+    name: smartalert-web
+    env: static
+    rootDir: frontend
+    buildCommand: npm install && npm run build
+    staticPublishPath: dist
+    envVars:
+      - key: VITE_API_URL
+        fromService:
+          type: web
+          name: smartalert-api
+          envVarKey: RENDER_EXTERNAL_URL

@@ -1,0 +1,79 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id         Int        @id @default(autoincrement())
+  name       String
+  email      String     @unique
+  password   String
+  language   String     @default("en")
+  createdAt  DateTime   @default(now())
+  aiApiKey   String?
+  aiModel    String?
+  aiProvider String?
+  updatedAt  DateTime   @updatedAt
+  avatarUrl  String?
+  whatsappPhoneNumberId String?
+  whatsappWabaId        String?
+  whatsappToken         String?
+  alerts     Alert[]
+  alertLogs  AlertLog[]
+}
+
+model Alert {
+  id             Int        @id @default(autoincrement())
+  userId         Int
+  clientName     String
+  clientPhone    String
+  type           String
+  message        String
+  sendDate       DateTime
+  status         String     @default("scheduled")
+  priority       String     @default("medium")
+  aiGenerated    Boolean    @default(false)
+  aiTone         String?
+  recurrence     String     @default("once")
+  recurrenceDays Int?
+  recurrenceEnd  DateTime?
+  nextSendDate   DateTime?
+  parentId       Int?
+  autoRetry      Boolean    @default(true)
+  retryCount     Int        @default(0)
+  maxRetries     Int        @default(2)
+  createdAt      DateTime   @default(now())
+  updatedAt      DateTime   @updatedAt
+  attachmentUrl  String?
+  parent         Alert?     @relation("AlertRecurrence", fields: [parentId], references: [id])
+  children       Alert[]    @relation("AlertRecurrence")
+  user           User       @relation(fields: [userId], references: [id])
+  logs           AlertLog[]
+}
+
+model AlertLog {
+  id        Int      @id @default(autoincrement())
+  alertId   Int
+  userId    Int
+  action    String
+  details   String?
+  phone     String?
+  messageId String?
+  createdAt DateTime @default(now())
+  alert     Alert    @relation(fields: [alertId], references: [id])
+  user      User     @relation(fields: [userId], references: [id])
+}
+
+model AlertType {
+  id        Int      @id @default(autoincrement())
+  name      String
+  label     String
+  icon      String?  @default("bell")
+  color     String   @default("blue")
+  isDefault Boolean  @default(false)
+  createdAt DateTime @default(now())
+}

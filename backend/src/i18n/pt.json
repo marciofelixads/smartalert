@@ -1,0 +1,11 @@
+{
+    "auth_success": "Autenticação realizada com sucesso",
+    "auth_failed": "E-mail ou senha inválidos",
+    "user_registered": "Usuário registrado com sucesso",
+    "user_exists": "Usuário já existe",
+    "invoice_created": "Fatura criada com sucesso",
+    "invoice_updated": "Fatura atualizada com sucesso",
+    "invoice_deleted": "Fatura excluída com sucesso",
+    "unauthorized": "Acesso não autorizado",
+    "error_occurred": "Ocorreu um erro interno"
+}
