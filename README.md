@@ -17,6 +17,10 @@
   <a href="#deployment">Deployment</a>
 </p>
 
+<p align="center">
+  <b>🌟 Live Demo:</b> <a href="https://smartalert-git-main-marciofelixads-projects.vercel.app/" target="_blank">Frontend (Vercel)</a> | <b>🔌 API:</b> <a href="https://smartalert.onrender.com/" target="_blank">Backend (Render)</a>
+</p>
+
 ## Overview
 
 SmartAlert is a Full-Stack SaaS application designed to help businesses manage and automate their customer communication via WhatsApp. By integrating natively with the **Meta WhatsApp Cloud API**, it ensures 100% reliability, no risk of banishment, and enterprise-grade security.
