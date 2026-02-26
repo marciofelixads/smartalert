@@ -157,28 +157,6 @@ The backend exposes a highly documented REST API. All endpoints are prefixed wit
 
 ---
 
-## Deployment
-
-### Render (Recommended for Backend)
-
-The project includes a `render.yaml` infrastructure-as-code configuration to smoothly deploy the backend to Render.
-
-1. Create an account on [Render.com](https://render.com).
-2. Connect your GitHub repository.
-3. Render will automatically detect the `render.yaml` file (if provided) or you can create a new **Web Service**.
-4. Set the Root Directory to `backend`.
-5. Set Build Command: `npm install && npx prisma generate`
-6. Set Start Command: `npm start`
-7. Add your Environment Variables in the Render Dashboard (Do NOT commit your `.env` to Git).
-8. Under the 'Network' tab, your service will expose an endpoint. Ensure you update `VITE_API_URL` on the frontend side.
-
-### Vercel (Recommended for Frontend)
-
-1. Import the repository into Vercel.
-2. Set the Root Directory to `frontend`.
-3. The framework preset should auto-detect "Vite/React".
-4. Add environment variable `VITE_API_URL` pointing to your Backend URL.
-5. Deploy.
 
 ---
 
