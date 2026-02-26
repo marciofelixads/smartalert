@@ -19,9 +19,9 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
     const getInitialLang = (): Language => {
         const saved = localStorage.getItem('smart_invoice_lang') as Language;
         if (saved) return saved;
-        // Usa o idioma do navegador como default instantâneo
-        const browserLang = navigator.language.toLowerCase();
-        return browserLang.startsWith('pt') ? 'pt' : 'en';
+
+        // Priority default set to English for international markets
+        return 'en';
     };
 
     const [language, setLanguage] = useState<Language>(getInitialLang);
