@@ -173,4 +173,4 @@ The backend exposes a highly documented REST API. All endpoints are prefixed wit
 
 This project is licensed under the MIT License - see the LICENSE file for details.
 
-<p align="center">Made with ❤️ for automation and excellence.</p>
+<p align="center">Made with ❤️ for Marcio Félix automation and excellence.</p>
